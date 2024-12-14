@@ -8,11 +8,22 @@ def sum_of_sins(n):
     return x, sum_sins,result_an
 
 if __name__ == "__main__":
-    n = 1*10**12  
+    n = 10**8
+    results_reds = []
+
     x,result_sum,result_an = sum_of_sins(n)
-    plt.plot(x,np.abs(result_sum-result_an))
-    plt.yscale('log')
+    mean_residual = result_sum - result_an
+
+
+    # Calculate statistics
+
+
+    plt.plot(x, mean_residual, label='Mean Residual')
+
+
     plt.xlabel('n')
     plt.xscale('log')
-    plt.ylabel('resudual')
+    plt.yscale('symlog', linthresh=1e-16)
+    plt.ylabel('Residual')
+    plt.legend()
     plt.show()
